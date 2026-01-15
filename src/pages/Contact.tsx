@@ -34,7 +34,7 @@ const Contact = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const whatsappNumber = "918459708577"; // 🔴 Replace with your number
+    const whatsappNumber = "919960889772"; // 🔴 Replace with your number
 
     const text = `
 New Contact Form Submission 👇
