@@ -24,7 +24,8 @@ const Home = () => {
           <p className="text-base md:text-xl max-w-3xl leading-relaxed mb-6">
             Associate Professor · Researcher · Mentor <br />
             Department of Computer Engineering <br />
-            Dr. D. Y. Patil Institute of Technology, Pimpri, Pune
+            Ajeenkya DY Patil School of Engineering-
+            ADYPSOE
           </p>
 
           <a

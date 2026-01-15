@@ -32,13 +32,13 @@ const Bio = () => {
             <p className="text-gray-300 leading-relaxed mb-4 text-sm md:text-base">
               Dr. Atul B. Kathole is an accomplished academician and researcher
               with over <strong className="text-white">14.6 years of teaching experience</strong>.
-              He is currently working as an Associate Professor in the
+              I am currently working as an Associate Professor in the
               Department of Computer Engineering at
-              <strong className="text-white"> Dr. D. Y. Patil Institute of Technology, Pimpri, Pune</strong>.
+              <strong className="text-white"> Ajeenkya DY Patil School of Engineering, Pune</strong>.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-4 text-sm md:text-base">
-              His research interests include <strong className="text-white">
+              My research interests include <strong className="text-white">
               Internet of Things (IoT), Machine Learning, Network Security,
               Cloud Computing, Cyber Security, and Information Security</strong>.
               He has published extensively in reputed SCI and SCOPUS indexed
