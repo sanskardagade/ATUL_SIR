@@ -1,11 +1,62 @@
+import { useState } from "react";
+import type {
+  ChangeEvent,
+  FormEvent
+} from "react";
+
+interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
 const Contact = () => {
+
+  const [formData, setFormData] = useState<ContactFormData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const whatsappNumber = "918459708577"; // 🔴 Replace with your number
+
+    const text = `
+New Contact Form Submission 👇
+
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+    `;
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <div className="w-full bg-[#0e0f14]">
 
       {/* ================= HERO ================= */}
       <section className="w-full pt-20 md:pt-16">
-
-        {/* WRAPPER */}
         <div className="relative max-w-7xl mx-auto px-4 md:px-14 min-h-[80vh] overflow-hidden">
 
           {/* DESKTOP BACKGROUND */}
@@ -34,13 +85,7 @@ const Contact = () => {
 
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
                 Please use the contact form below for academic, research,
-                or professional correspondence. While I may not be able
-                to respond to every message, all communications are read.
-              </p>
-
-              <p className="text-gray-700 text-sm leading-relaxed mb-6">
-                For academic collaborations, invited talks, workshops,
-                or media-related enquiries, kindly use the form below.
+                or professional correspondence.
               </p>
 
               <a
@@ -61,39 +106,71 @@ const Contact = () => {
         id="form"
         className="max-w-6xl mx-auto px-4 md:px-6 py-20 bg-white"
       >
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6"
+        >
 
           <div>
             <label className="text-sm font-medium block mb-1">
               Name <span className="text-red-500">*</span>
             </label>
-            <input className="w-full border border-gray-300 px-3 py-2" />
+            <input
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 px-3 py-2"
+            />
           </div>
 
           <div>
             <label className="invisible block mb-1">Last</label>
-            <input className="w-full border border-gray-300 px-3 py-2" />
+            <input
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              className="w-full border border-gray-300 px-3 py-2"
+            />
           </div>
 
           <div>
             <label className="text-sm font-medium block mb-1">
               Email <span className="text-red-500">*</span>
             </label>
-            <input className="w-full border border-gray-300 px-3 py-2" />
+            <input
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 px-3 py-2"
+            />
           </div>
 
           <div>
             <label className="text-sm font-medium block mb-1">
               Phone
             </label>
-            <input className="w-full border border-gray-300 px-3 py-2" />
+            <input
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full border border-gray-300 px-3 py-2"
+            />
           </div>
 
           <div className="md:col-span-2">
             <label className="text-sm font-medium block mb-1">
               Subject
             </label>
-            <input className="w-full border border-gray-300 px-3 py-2" />
+            <input
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              className="w-full border border-gray-300 px-3 py-2"
+            />
           </div>
 
           <div className="md:col-span-2">
@@ -101,14 +178,20 @@ const Contact = () => {
               Message
             </label>
             <textarea
+              name="message"
               rows={6}
+              value={formData.message}
+              onChange={handleChange}
               className="w-full border border-gray-300 px-3 py-2"
             />
           </div>
 
           <div className="md:col-span-2 mt-4">
-            <button className="bg-[#FFBF00] hover:bg-[#e6ac00] text-black px-6 py-2 text-sm transition">
-              Submit
+            <button
+              type="submit"
+              className="bg-[#FFBF00] hover:bg-[#e6ac00] text-black px-6 py-2 text-sm transition w-full md:w-auto"
+            >
+              Send 
             </button>
           </div>
 
