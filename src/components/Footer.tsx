@@ -7,15 +7,6 @@ const Footer = () => {
 
           <span className="hidden sm:inline mx-1">|</span>
 
-          <a
-            href="/privacy-policy"
-            className="hover:underline hover:text-[#FFBF00] transition"
-          >
-            Privacy Policy
-          </a>
-
-          <span className="hidden sm:inline mx-1">|</span>
-
           <span>
             Website by{" "}
             <span className="font-medium text-[#FFBF00]">

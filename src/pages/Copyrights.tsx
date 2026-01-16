@@ -56,9 +56,10 @@ const Copyrights = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };
 
 export default Copyrights;
+
+

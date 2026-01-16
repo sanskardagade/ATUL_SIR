@@ -22,18 +22,40 @@ const Home = () => {
           </h1>
 
           <p className="text-base md:text-xl max-w-3xl leading-relaxed mb-6">
-            Associate Professor · Researcher · Mentor <br />
+            Professor · Researcher · Mentor <br />
             Department of Computer Engineering <br />
-            Ajeenkya DY Patil School of Engineering-
-            ADYPSOE
+            School of Engineering, Ajeenkya D. Y. Patil University, Pune
           </p>
 
-          <a
-            href="/contact"
-            className="mt-4 inline-block bg-[#FFBF00] hover:bg-[#e6ac00] text-black px-8 py-3 text-sm font-medium rounded transition"
-          >
-            Get in Touch
-          </a>
+          {/* ================= ACADEMIC LINKS ================= */}
+          <div className="flex flex-wrap gap-6 mt-6 justify-center">
+            <a
+              href="https://scholar.google.com/citations?hl=en&user=5kZO4MoAAAAJ"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium text-[#FFBF00] hover:underline"
+            >
+              Google Scholar
+            </a>
+
+            <a
+              href="https://orcid.org/0000-0002-6162-8200"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium text-[#FFBF00] hover:underline"
+            >
+              ORCID
+            </a>
+
+            <a
+              href="https://www.scopus.com/authid/detail.uri?authorId=57202995656"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium text-[#FFBF00] hover:underline"
+            >
+              Scopus
+            </a>
+          </div>
         </div>
       </section>
 
@@ -62,28 +84,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= STATS ================= */}
-      <section className="bg-[#1f1f1f] py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-          <div>
-            <p className="text-3xl md:text-4xl font-bold">13+</p>
-            <p className="text-sm text-gray-300 mt-1">Patents</p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl font-bold">26+</p>
-            <p className="text-sm text-gray-300 mt-1">Copyrights</p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl font-bold">37+</p>
-            <p className="text-sm text-gray-300 mt-1">Publications</p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl font-bold">25+</p>
-            <p className="text-sm text-gray-300 mt-1">Expert Talks</p>
-          </div>
-        </div>
-      </section>
-
       {/* ================= RESEARCH CONTRIBUTION ================= */}
       <section
         className="relative bg-cover bg-center py-24"
@@ -98,32 +98,64 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-14">
 
-            <div className="bg-white/10 backdrop-blur p-8 text-center rounded">
+            <a href="/patents" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
               <h3 className="text-xl font-serif mb-4">Patents</h3>
               <p className="text-sm text-gray-200">
-                13 patents filed <br />
-                5 patents granted <br />
+                43+ patents Published <br />
+                8 patents granted <br />
                 Focused on IoT, Security & Smart Systems
               </p>
-            </div>
+            </a>
 
-            <div className="bg-white/10 backdrop-blur p-8 text-center rounded">
+            <a href="/copyrights" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
               <h3 className="text-xl font-serif mb-4">Copyrights</h3>
               <p className="text-sm text-gray-200">
-                26 registered copyrights <br />
+                26+ copyrights published<br />
                 Academic, Research & Software Works
               </p>
-            </div>
+            </a>
 
-            <div className="bg-white/10 backdrop-blur p-8 text-center rounded">
+            <a href="/publications" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
               <h3 className="text-xl font-serif mb-4">
                 Research Publications
               </h3>
               <p className="text-sm text-gray-200">
-                37+ Publications <br />
+                67+ Publications <br />
                 SCI & SCOPUS Indexed Journals
               </p>
-            </div>
+            </a>
+
+            <a href="/experience" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
+              <h3 className="text-xl font-serif mb-4">Expert Talks</h3>
+              <p className="text-sm text-gray-200">
+                45+ Expert Talks <br />
+                FDPs, Workshops & Keynote Sessions <br />
+                Academia & Industry Platforms
+              </p>
+            </a>
+
+            <a href="/research-grant" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
+              <h3 className="text-xl font-serif mb-4">Research Funding</h3>
+              <p className="text-sm text-gray-200">
+                Funded Research Projects <br />
+                Government & Industry Sponsored <br />
+                National & International Grants
+              </p>
+            </a>
+
+            <a
+              href="https://orcid.org/0000-0002-6162-8200"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition"
+            >
+              <h3 className="text-xl font-serif mb-4">Editor & Reviewer</h3>
+              <p className="text-sm text-gray-200">
+                IEEE Journals <br />
+                Taylor & Francis Journals <br />
+                Springer & Elsevier Journals
+              </p>
+            </a>
 
           </div>
         </div>

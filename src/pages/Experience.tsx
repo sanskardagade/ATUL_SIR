@@ -10,7 +10,7 @@ const Experience = () => {
 
         <p className="text-center text-gray-400 max-w-3xl mx-auto text-sm md:text-base">
           Academic, teaching, and professional experience spanning more than
-          14.6 years in higher education, research, and institutional leadership.
+          16.6 years in higher education, research, and institutional leadership.
         </p>
       </section>
 
@@ -18,12 +18,40 @@ const Experience = () => {
       <section className="max-w-7xl mx-auto px-4 md:px-14 pb-28">
         <div className="relative border-l border-white/20 pl-6 md:pl-10 space-y-14">
 
-          {/* CURRENT */}
+          {/* CURRENT – ADYPU */}
           <div className="relative">
             <span className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-[#FFBF00]" />
 
             <span className="inline-block border border-[#FFBF00] text-[#FFBF00] text-xs px-3 py-1 mb-3">
-              Jan 2023 – Present
+              Sept 2025 – Present
+            </span>
+
+            <h3 className="text-xl md:text-2xl font-serif mb-1">
+             Professor
+            </h3>
+
+            <p className="text-[#FFBF00] text-sm mb-1">
+              Computer Science & Engineering
+            </p>
+
+            <p className="text-gray-300 mb-4">
+              School of Engineering, Ajeenkya D. Y. Patil University, Pune
+            </p>
+
+            <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+              Serving as Professor with key responsibilities in
+              undergraduate and postgraduate teaching, research supervision,
+              academic leadership, curriculum design, publications, patents,
+              and collaborative research initiatives.
+            </p>
+          </div>
+
+          {/* JAN 2023 – SEPT 2025 */}
+          <div className="relative">
+            <span className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-[#FFBF00]" />
+
+            <span className="inline-block border border-[#FFBF00] text-[#FFBF00] text-xs px-3 py-1 mb-3">
+              Jan 2023 – Sept 2025
             </span>
 
             <h3 className="text-xl md:text-2xl font-serif mb-1">
@@ -39,11 +67,10 @@ const Experience = () => {
             </p>
 
             <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-              Currently serving as Associate Professor with responsibilities
-              including undergraduate and postgraduate teaching, research
-              supervision, academic mentoring, curriculum development,
-              publications, patents, FDP coordination, and institutional
-              academic activities.
+              Served as Associate Professor with responsibilities including
+              undergraduate and postgraduate teaching, research supervision,
+              academic mentoring, curriculum development, publications,
+              patents, FDP coordination, and institutional academic activities.
             </p>
           </div>
 
@@ -60,7 +87,7 @@ const Experience = () => {
             </h3>
 
             <p className="text-[#FFBF00] text-sm mb-1">
-              Information Technology
+              Department of Information Technology
             </p>
 
             <p className="text-gray-300 mb-4">
@@ -87,7 +114,7 @@ const Experience = () => {
             </h3>
 
             <p className="text-[#FFBF00] text-sm mb-1">
-              Computer Engineering
+              Department of Computer Engineering
             </p>
 
             <p className="text-gray-300 mb-4">
@@ -114,7 +141,7 @@ const Experience = () => {
             </h3>
 
             <p className="text-[#FFBF00] text-sm mb-1">
-              Computer Science & Engineering
+              Department of Computer Science & Engineering
             </p>
 
             <p className="text-gray-300 mb-4">
@@ -138,7 +165,7 @@ const Experience = () => {
             </h3>
 
             <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-              ✔ 14.6+ Years Teaching Experience  
+              ✔ 16.6+ Years Teaching Experience  
               <br />
               ✔ 1 Year Industrial Experience  
               <br />

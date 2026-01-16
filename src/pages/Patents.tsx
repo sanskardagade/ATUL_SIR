@@ -46,6 +46,8 @@ const Patents = () => {
             </h3>
 
             <ul className="space-y-5 list-disc list-inside text-gray-300 leading-relaxed text-sm md:text-base">
+
+              {/* EXISTING PATENTS */}
               <li>
                 <strong>Application Number:</strong> 4140/MUM/2015 <br />
                 <strong>Title:</strong> Implementation of Secure Bank Locker
@@ -89,6 +91,121 @@ const Patents = () => {
                 <strong>Status:</strong> Published <br />
                 <strong>Publication Date:</strong> 17/06/2022
               </li>
+
+              {/* ================= NEW PATENTS ================= */}
+              <li>
+                <strong>Application Number:</strong> 202521018482 <br />
+                <strong>Title:</strong> MediSmart - Intelligent Medication Management & Health Monitoring <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 14/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521018521 <br />
+                <strong>Title:</strong> Ecosun Solar Shine Automated Tracking Energy Management, Cleaning,
+                and Monitoring System for Improved Energy Efficiency in Smart Cities <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 14/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521019141 <br />
+                <strong>Title:</strong> Smart Agriculture Plant Health Monitoring Using IoT and Leaf Disease Detection Using Machine Learning <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 14/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521019485 <br />
+                <strong>Title:</strong> Smart Glasses – Smart Projector and HUD <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521019490 <br />
+                <strong>Title:</strong> Engine Control Based on Alcohol Detection <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521019502 <br />
+                <strong>Title:</strong> IoT-Driven Smart Parking Solution <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521019962 <br />
+                <strong>Title:</strong> Smart Agriculture: Early Tomato Leaf Disease Detection Using CNN-Based Deep Learning <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521019972 <br />
+                <strong>Title:</strong> Wahan Mitra - Automatic Headlight Control and Vehicle Detection System for Enhanced Road Safety <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521020039 <br />
+                <strong>Title:</strong> Intelligent EV Cycle with Integrated Sensors and Solar-Assisted Charging <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521020086 <br />
+                <strong>Title:</strong> Smart Portable AC <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521021006 <br />
+                <strong>Title:</strong> AI-Powered Smart Cleaning & Assistance Robo Car <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521021005 <br />
+                <strong>Title:</strong> Smart Classroom using AI <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202521021220 <br />
+                <strong>Title:</strong> AI-Powered Virtual Camera-Assisted Tuberculosis Detection Using Chest X Ray Images <br />
+                <strong>Status:</strong> Published <br />
+                <strong>Publication Date:</strong> 21/03/2025
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 2021105373 <br />
+                <strong>Title:</strong> A device for child safety and security <br />
+                <strong>Status:</strong> Granted <br />
+                <strong>Publication Date:</strong> 18/11/2021
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202321053391 <br />
+                <strong>Title:</strong> ROADSIDE UNIT (RSU) BASED EMERGENCY VEHICLE WARNING SYSTEM <br />
+                <strong>Status:</strong> Granted <br />
+                <strong>Publication Date:</strong> -
+              </li>
+
+              <li>
+                <strong>Application Number:</strong> 202221064109 <br />
+                <strong>Title:</strong> AN ECO TANK <br />
+                <strong>Status:</strong> Granted <br />
+                <strong>Publication Date:</strong> -
+              </li>
+
             </ul>
           </div>
 

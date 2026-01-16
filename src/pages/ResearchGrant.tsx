@@ -62,6 +62,54 @@ const ResearchGrant = () => {
             </ul>
           </div>
 
+          {/* GRANT 3 */}
+          <div className="bg-white/5 backdrop-blur rounded-lg p-6 md:p-8">
+            <h3 className="text-lg md:text-xl font-serif text-[#FFBF00] mb-4">
+              Research Grant – ISRO
+            </h3>
+
+            <ul className="space-y-2 text-gray-300 text-sm md:text-base">
+              <li>
+                <strong>Fund Received:</strong> INR 10,00,000 /-
+              </li>
+              <li>
+                <strong>Grant Agency:</strong> ISRO
+              </li>
+            </ul>
+          </div>
+
+          {/* GRANT 4 */}
+          <div className="bg-white/5 backdrop-blur rounded-lg p-6 md:p-8">
+            <h3 className="text-lg md:text-xl font-serif text-[#FFBF00] mb-4">
+              Research Grant – Ajay Bio-Tech
+            </h3>
+
+            <ul className="space-y-2 text-gray-300 text-sm md:text-base">
+              <li>
+                <strong>Fund Received:</strong> INR 5,60,000 /-
+              </li>
+              <li>
+                <strong>Grant Agency:</strong> Ajay Bio-Tech
+              </li>
+            </ul>
+          </div>
+
+          {/* GRANT 5 */}
+          <div className="bg-white/5 backdrop-blur rounded-lg p-6 md:p-8">
+            <h3 className="text-lg md:text-xl font-serif text-[#FFBF00] mb-4">
+              Research Grant – La Trobe University, Australia
+            </h3>
+
+            <ul className="space-y-2 text-gray-300 text-sm md:text-base">
+              <li>
+                <strong>Fund Received:</strong> INR 2,50,000 /-
+              </li>
+              <li>
+                <strong>Grant Agency:</strong> La Trobe University, Australia
+              </li>
+            </ul>
+          </div>
+
         </div>
       </section>
 
