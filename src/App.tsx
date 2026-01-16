@@ -8,6 +8,7 @@ import Copyrights from "./pages/Copyrights";
 import Publications from "./pages/Publications";
 import Patents from "./pages/Patents";
 import ResearchGrant from "./pages/ResearchGrant";
+import ExpertSession from "./pages/ExpertSession";
 import Footer from "./components/Footer";
 
 
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/copyrights" element={<Copyrights />} />
             <Route path="/publications" element={<Publications />} />
             <Route path="/patents" element={<Patents />} />
+            <Route path="/expertsession" element={<ExpertSession />} />
             <Route path="/research-grant" element={<ResearchGrant />} />
 
           </Routes>

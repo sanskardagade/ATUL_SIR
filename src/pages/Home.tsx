@@ -125,7 +125,7 @@ const Home = () => {
               </p>
             </a>
 
-            <a href="/experience" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
+            <a href="/expertsession" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
               <h3 className="text-xl font-serif mb-4">Expert Talks</h3>
               <p className="text-sm text-gray-200">
                 45+ Expert Talks <br />

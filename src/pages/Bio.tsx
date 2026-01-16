@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Bio = () => {
   return (
     <div className="w-full bg-[#0e0f14] text-white">
@@ -26,15 +28,15 @@ const Bio = () => {
             </h2>
 
             <p className="text-base md:text-lg text-gray-300 mb-6">
-              Ph.D. (Computer Science & Engineering) 
+              Ph.D. (Computer Science & Engineering)
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-4 text-sm md:text-base">
               Dr. Atul B. Kathole is an accomplished academician and researcher
               with over <strong className="text-white">16.6 years of teaching experience</strong>.
-              I am currently working as an Professor in the
+              I am currently working as a Professor in the
               Department of <strong className="text-white">Computer Science & Engineering</strong> at
-              <strong className="text-white"> School of Engineering, Ajeenkya D. Y. Patil University ,Pune </strong>.
+              <strong className="text-white"> School of Engineering, Ajeenkya D. Y. Patil University, Pune</strong>.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-4 text-sm md:text-base">
@@ -45,22 +47,26 @@ const Bio = () => {
               journals and international conferences.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* ACADEMIC QUALIFICATIONS */}
+      {/* ================= QUALIFICATIONS ================= */}
+      <section className="max-w-7xl mx-auto px-4 md:px-14 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+
           <div>
             <h3 className="text-xl md:text-2xl font-serif mb-6">
               Academic Qualifications
             </h3>
 
             <ul className="space-y-4 text-gray-300 list-disc list-inside text-sm md:text-base">
-              <li>Ph.D. in Computer Science & Engineering – Sant Gadge Baba Amravati University (SGBAU)</li>
+              <li>Ph.D. in Computer Science & Engineering – SGBAU</li>
               <li>M.E. in Computer Science & Engineering – Pune University</li>
               <li>MBA (Information Technology) – Mumbai University</li>
-              <li>B.E. in Computer Science & Engineering – Sant Gadge Baba Amravati University (SGBAU)</li>
+              <li>B.E. in Computer Science & Engineering – SGBAU</li>
             </ul>
           </div>
 
-          {/* OTHER CONTRIBUTIONS */}
           <div>
             <h3 className="text-xl md:text-2xl font-serif mb-6">
               Other Contributions
@@ -74,37 +80,48 @@ const Bio = () => {
               <li>Coordinator for FDPs, workshops and STTP programs</li>
             </ul>
           </div>
-
-
         </div>
       </section>
-
-      {/* ================= QUALIFICATIONS ================= */}
-      
 
       {/* ================= STATS STRIP ================= */}
       <section className="bg-[#1f1f1f] py-16">
         <div className="max-w-7xl mx-auto px-4 md:px-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
 
-          <div>
+          <Link
+            to="/patents"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#FFBF00] transition"
+          >
             <p className="text-3xl md:text-4xl font-bold">43+</p>
             <p className="text-sm text-gray-400 mt-1">Patents</p>
-          </div>
+          </Link>
 
-          <div>
+          <Link
+            to="/copyrights"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#FFBF00] transition"
+          >
             <p className="text-3xl md:text-4xl font-bold">26+</p>
             <p className="text-sm text-gray-400 mt-1">Copyrights</p>
-          </div>
+          </Link>
 
-          <div>
+          <Link
+            to="/publications"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#FFBF00] transition"
+          >
             <p className="text-3xl md:text-4xl font-bold">67+</p>
             <p className="text-sm text-gray-400 mt-1">Publications</p>
-          </div>
+          </Link>
 
-          <div>
+          <Link
+            to="/expertsession"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#FFBF00] transition"
+          >
             <p className="text-3xl md:text-4xl font-bold">45+</p>
             <p className="text-sm text-gray-400 mt-1">Expert Talks</p>
-          </div>
+          </Link>
 
         </div>
       </section>
@@ -114,6 +131,7 @@ const Bio = () => {
 };
 
 export default Bio;
+
 
 
 
