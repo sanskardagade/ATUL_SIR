@@ -115,7 +115,7 @@ const Bio = () => {
           </Link>
 
           <Link
-            to="/expertsession"
+            to="/experience"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="hover:text-[#FFBF00] transition"
           >
@@ -131,8 +131,6 @@ const Bio = () => {
 };
 
 export default Bio;
-
-
 
 
 
