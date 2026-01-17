@@ -30,7 +30,7 @@ const Home = () => {
           {/* ================= ACADEMIC LINKS ================= */}
           <div className="flex flex-wrap gap-6 mt-6 justify-center">
             <a
-              href="https://scholar.google.com/citations?hl=en&user=5kZO4MoAAAAJ"
+              href="https://scholar.google.com/citations?hl=en&user=5kZO4MoAAAAJ&view_op=list_works&sortby=pubdate"
               target="_blank"
               rel="noreferrer"
               className="text-sm font-medium text-[#FFBF00] hover:underline"

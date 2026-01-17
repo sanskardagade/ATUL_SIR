@@ -1,4 +1,4 @@
-import React from "react";
+
 const expertSessions = [
   "NS2 & NS3 Workshop at Sinhgad College – June 2017.",
   "IoT Workshop at JDIET, Yavatmal – December 2018.",
