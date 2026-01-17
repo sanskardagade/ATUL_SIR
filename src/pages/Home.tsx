@@ -28,34 +28,40 @@ const Home = () => {
           </p>
 
           {/* ================= ACADEMIC LINKS ================= */}
-          <div className="flex flex-wrap gap-6 mt-6 justify-center">
+          {/* ================= ACADEMIC LINKS ================= */}
+          <div className="flex flex-wrap gap-10 mt-8 justify-center">
             <a
               href="https://scholar.google.com/citations?hl=en&user=5kZO4MoAAAAJ&view_op=list_works&sortby=pubdate"
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-[#FFBF00] hover:underline"
+              className="flex flex-col items-center text-[#FFBF00] hover:underline transition"
             >
-              Google Scholar
+              <span className="text-4xl mb-1">🎓</span>
+              <span className="text-sm font-medium">Google Scholar</span>
             </a>
 
             <a
               href="https://orcid.org/0000-0002-6162-8200"
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-[#FFBF00] hover:underline"
+              className="flex flex-col items-center text-[#FFBF00] hover:underline transition"
             >
-              ORCID
+              <span className="text-4xl mb-1">🆔</span>
+              <span className="text-sm font-medium">ORCID</span>
             </a>
 
             <a
               href="https://www.scopus.com/authid/detail.uri?authorId=57202995656"
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-[#FFBF00] hover:underline"
+              className="flex flex-col items-center text-[#FFBF00] hover:underline transition"
             >
-              Scopus
+              <span className="text-4xl mb-1">📊</span>
+              <span className="text-sm font-medium">Scopus</span>
             </a>
+
           </div>
+
         </div>
       </section>
 
@@ -110,7 +116,7 @@ const Home = () => {
             <a href="/copyrights" className="bg-white/10 backdrop-blur p-8 text-center rounded hover:bg-white/20 transition">
               <h3 className="text-xl font-serif mb-4">Copyrights</h3>
               <p className="text-sm text-gray-200">
-                26+ copyrights published<br />
+                26+ copyrights published <br />
                 Academic, Research & Software Works
               </p>
             </a>
