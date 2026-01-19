@@ -15,7 +15,8 @@ const Navbar = () => {
     { label: "Home", path: "/" },
     { label: "About Me", path: "/bio" },
     { label: "Experience", path: "/experience" },
-    { label: "Get in Touch", path: "/contact" },
+    { label: "Portfolio Handled", path: "portfolio-handled" },
+    { label: "Get in Touch", path: "/contact" }
   ];
 
   return (

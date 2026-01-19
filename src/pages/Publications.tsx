@@ -73,10 +73,14 @@ const journals = [
 ];
 
 const books = [
-  "Operation Research Techniques – JP Publication, 2011.",
-  "Numerical Methods and OR Techniques – Piyush Publication, 2012.",
-  "Operation Research (ISBN: 9783659171147) – LAP Lambert Academic Publishing, Germany, 2012.",
-  "Performance Analysis of AODV, DSR & DSDV Routing Protocol in VANET – LAP Lambert Academic Publishing, Germany, 2018.",
+  { title: "Operation Research Techniques – JP Publication, 2011." },
+  { title: "Numerical Methods and OR Techniques – Piyush Publication, 2012." },
+  { title: "Operation Research (ISBN: 9783659171147) – LAP Lambert Academic Publishing, Germany, 2012." },
+  { title: "Performance Analysis of AODV, DSR & DSDV Routing Protocol in VANET – LAP Lambert Academic Publishing, Germany, 2018." },
+  {
+    title: "Bioengineering and IoT Shaping the Future of Healthcare",
+    link: "https://www.routledge.com/Bioengineering-and-IoT-Shaping-the-Future-of-Healthcare/Katti-Kathole-Le/p/book/9781032903156",
+  },
 ];
 
 const Publications = () => {
@@ -84,7 +88,6 @@ const Publications = () => {
 
   return (
     <div className="w-full bg-[#0e0f14] text-white">
-
       <section className="max-w-7xl mx-auto px-4 md:px-14 pt-24 pb-14">
         <h1 className="text-3xl md:text-4xl font-serif text-center mb-6">
           Publications
@@ -125,15 +128,33 @@ const Publications = () => {
         {/* ================= CONTENT ================= */}
         <div className="bg-white/5 backdrop-blur rounded-lg p-6 md:p-10">
           <ol className="space-y-4 list-decimal list-inside text-gray-300 leading-relaxed">
-            {(activeTab === "journals" ? journals : books).map((item, index) => (
-              <li key={index} className="text-sm md:text-base">
-                {item}
-              </li>
-            ))}
+            {activeTab === "journals" &&
+              journals.map((item, index) => (
+                <li key={index} className="text-sm md:text-base">
+                  {item}
+                </li>
+              ))}
+
+            {activeTab === "books" &&
+              books.map((book, index) => (
+                <li key={index} className="text-sm md:text-base">
+                  {book.link ? (
+                    <a
+                      href={book.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FFBF00] hover:underline"
+                    >
+                      {book.title}
+                    </a>
+                  ) : (
+                    book.title
+                  )}
+                </li>
+              ))}
           </ol>
         </div>
       </section>
-
     </div>
   );
 };
