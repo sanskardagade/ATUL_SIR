@@ -19,7 +19,7 @@ const Navbar = () => {
     { label: "Get in Touch", path: "/contact" },
     {
       label: "Upcoming Books",
-      path: "https://drive.google.com/file/d/1xc66eF9LyLUgwFO3soML27KfOZWUUDHV/preview",
+      path: "/main1.html",
       external: true
     }
   ];
