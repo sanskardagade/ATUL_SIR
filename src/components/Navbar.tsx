@@ -16,7 +16,12 @@ const Navbar = () => {
     { label: "About Me", path: "/bio" },
     { label: "Experience", path: "/experience" },
     { label: "Portfolio Handled", path: "portfolio-handled" },
-    { label: "Get in Touch", path: "/contact" }
+    { label: "Get in Touch", path: "/contact" },
+    {
+      label: "Upcoming Books",
+      path: "https://drive.google.com/file/d/1xc66eF9LyLUgwFO3soML27KfOZWUUDHV/view?usp=sharing",
+      external: true
+    }
   ];
 
   return (
@@ -33,16 +38,27 @@ const Navbar = () => {
 
         {/* DESKTOP MENU - CENTER */}
         <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-          {navItems.map(({ label, path }) => (
+          {navItems.map(({ label, path, external }) => (
             <li key={path}>
-              <NavLink
-                to={path}
-                className={({ isActive }) =>
-                  `${linkClass} ${isActive ? activeClass : ""}`
-                }
-              >
-                {label}
-              </NavLink>
+              {external ? (
+                <a
+                  href={path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  {label}
+                </a>
+              ) : (
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    `${linkClass} ${isActive ? activeClass : ""}`
+                  }
+                >
+                  {label}
+                </NavLink>
+              )}
             </li>
           ))}
         </ul>
@@ -59,18 +75,31 @@ const Navbar = () => {
       {/* MOBILE MENU */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t px-4 pb-4 space-y-4">
-          {navItems.map(({ label, path }) => (
-            <NavLink
-              key={path}
-              to={path}
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                `block ${linkClass} ${isActive ? "text-[#FFBF00]" : ""}`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navItems.map(({ label, path, external }) =>
+            external ? (
+              <a
+                key={path}
+                href={path}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className={`block ${linkClass}`}
+              >
+                {label}
+              </a>
+            ) : (
+              <NavLink
+                key={path}
+                to={path}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block ${linkClass} ${isActive ? "text-[#FFBF00]" : ""}`
+                }
+              >
+                {label}
+              </NavLink>
+            )
+          )}
         </div>
       )}
     </header>
