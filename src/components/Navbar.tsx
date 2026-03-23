@@ -19,7 +19,7 @@ const Navbar = () => {
     { label: "Get in Touch", path: "/contact" },
     {
       label: "Upcoming Books",
-      path: "/main1.html",
+      path: "/books.html",
       external: true
     }
   ];
