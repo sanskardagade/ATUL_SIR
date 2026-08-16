@@ -10,7 +10,7 @@ const Footer = () => {
           <span>
             Website by{" "}
             <span className="font-medium text-[#FFBF00]">
-              Sanskar
+              Yash Infotech
             </span>{" "}
             in Pune, India.
           </span>
