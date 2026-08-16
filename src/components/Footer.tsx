@@ -9,9 +9,14 @@ const Footer = () => {
 
           <span>
             Website by{" "}
-            <span className="font-medium text-[#FFBF00]">
+            <a
+              href="https://yash-infotech.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-[#FFBF00]"
+            >
               Yash Infotech
-            </span>{" "}
+            </a>{" "}
             in Pune, India.
           </span>
         </p>
