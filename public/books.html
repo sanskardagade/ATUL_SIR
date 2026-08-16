@@ -1,700 +1,1607 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRC Press Book Chapter Call</title>
-  <style>
-    :root {
-      --bg: #06152b;
-      --bg2: #0b2447;
-      --panel: rgba(255,255,255,0.1);
-      --panel-solid: #f8fbff;
-      --line: rgba(255,255,255,0.16);
-      --text: #eaf4ff;
-      --dark: #0f172a;
-      --muted: #5b6b84;
-      --gold: #ffd166;
-      --gold2: #f4b400;
-      --blue: #60a5fa;
-      --cyan: #67e8f9;
-      --red: #ef4444;
-      --shadow: 0 20px 60px rgba(0,0,0,0.28);
-      --radius: 24px;
-    }
+<head>  
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      color: var(--dark);
-      background:
-        radial-gradient(circle at top right, rgba(103,232,249,0.12), transparent 24%),
-        radial-gradient(circle at top left, rgba(96,165,250,0.14), transparent 22%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 34%, #eef6ff 34%, #f9fbff 100%);
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-      opacity: 0.35;
-    }
+<title>Intelligent IoT-Enabled Healthcare System Using Tiny Machine Learning for Early Diagnosis</title>
 
-    .container { width: min(1180px, 92%); margin: 0 auto; position: relative; z-index: 1; }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    .hero {
-      color: var(--text);
-      padding: 28px 0 36px;
-      position: relative;
-    }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 560px;
-      height: 560px;
-      right: -140px;
-      top: 60px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,209,102,0.18), rgba(96,165,250,0.08), transparent 65%);
-      filter: blur(12px);
-      pointer-events: none;
-    }
+<style>
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
 
-    .brand {
-      font-size: 1.7rem;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
+body{
+background:#F8FAFC;
+color:#1E293B;
+overflow-x:hidden;
+}
 
-    .brand span { color: var(--gold); }
-    .brand small {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.78);
-      margin-top: 3px;
-    }
+/************** NAVBAR **************/
 
-    nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      backdrop-filter: blur(10px);
-    }
+header{
 
-    nav a {
-      text-decoration: none;
-      color: white;
-      padding: 10px 14px;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      font-size: 0.95rem;
-      transition: 0.2s ease;
-    }
+background:linear-gradient(135deg,#2563EB,#06B6D4);
 
-    nav a:hover {
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.1);
-    }
+min-height:100vh;
 
-    .hero-card {
-      position: relative;
-      border-radius: 30px;
-      padding: 36px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.06));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      backdrop-filter: blur(14px);
-    }
+color:white;
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 78% 28%, rgba(103,232,249,0.18), transparent 20%),
-                  radial-gradient(circle at 22% 82%, rgba(255,209,102,0.12), transparent 20%);
-      pointer-events: none;
-    }
+position:relative;
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: rgba(255,209,102,0.12);
-      border: 1px solid rgba(255,209,102,0.38);
-      color: var(--gold);
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      margin-bottom: 14px;
-    }
+overflow:hidden;
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 1.08;
-      max-width: 920px;
-      position: relative;
-    }
+}
 
-    .gradient-text {
-      background: linear-gradient(90deg, #ffffff, #d4ecff 40%, #ffd166 95%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.container{
 
-    .subtitle {
-      margin: 18px 0 0;
-      font-size: 1.08rem;
-      max-width: 900px;
-      color: rgba(255,255,255,0.88);
-    }
+width:90%;
 
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 22px;
-      margin-top: 28px;
-      align-items: stretch;
-    }
+max-width:1300px;
 
-    .glass, .quick-box, .mini-panel {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 22px;
-      padding: 20px;
-      color: white;
-      backdrop-filter: blur(12px);
-    }
+margin:auto;
 
-    .quick-box h3, .mini-panel h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: var(--gold);
-      font-size: 1.05rem;
-    }
+}
 
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
+nav{
 
-    .stat {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
-      padding: 16px;
-    }
+display:flex;
 
-    .stat .label {
-      color: rgba(255,255,255,0.74);
-      font-size: 0.9rem;
-    }
+justify-content:space-between;
 
-    .stat .value {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-top: 4px;
-      color: white;
-    }
+align-items:center;
 
-    .cta-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 22px;
-    }
+padding:25px 0;
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-decoration: none;
-      padding: 13px 18px;
-      border-radius: 16px;
-      font-weight: 800;
-      transition: 0.2s ease;
-    }
+}
 
-    .btn-primary {
-      background: linear-gradient(90deg, var(--gold), #ffe08a);
-      color: #172033;
-      box-shadow: 0 10px 26px rgba(244,180,0,0.25);
-    }
+.logo{
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.16);
-    }
+font-size:30px;
 
-    .btn:hover { transform: translateY(-2px); }
+font-weight:700;
 
-    section { padding: 30px 0; position: relative; z-index: 1; }
+}
 
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
+.logo span{
 
-    .section-title {
-      margin: 0;
-      font-size: 2rem;
-      color: #0b1f3a;
-    }
+color:#FFD54F;
 
-    .section-note {
-      color: var(--muted);
-      max-width: 780px;
-      margin: 0;
-    }
+}
 
-    .grid { display: grid; gap: 18px; }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+nav ul{
 
-    .card {
-      background: rgba(255,255,255,0.95);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 14px 34px rgba(15,23,42,0.09);
-      border: 1px solid rgba(15,23,42,0.05);
-    }
+display:flex;
 
-    .card h3 {
-      margin: 0 0 10px;
-      color: #0b1f3a;
-      font-size: 1.12rem;
-    }
+list-style:none;
 
-    .muted { color: var(--muted); }
+}
 
-    .feature-card {
-      background: linear-gradient(180deg, #ffffff, #f2f8ff);
-      position: relative;
-      overflow: hidden;
-    }
+nav ul li{
 
-    .feature-card::after {
-      content: "";
-      position: absolute;
-      width: 110px;
-      height: 110px;
-      right: -22px;
-      top: -22px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(96,165,250,0.16), transparent 70%);
-    }
+margin-left:30px;
 
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
+}
 
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 16px;
-      align-items: start;
-      background: rgba(255,255,255,0.96);
-      border-radius: 22px;
-      padding: 18px;
-      box-shadow: 0 12px 30px rgba(15,23,42,0.08);
-    }
+nav ul li a{
 
-    .timeline-date {
-      background: linear-gradient(135deg, #0b2447, #123f74);
-      color: white;
-      padding: 12px 14px;
-      border-radius: 16px;
-      font-weight: 800;
-      text-align: center;
-    }
+color:white;
 
-    .link-cards a, .card a { color: #0f4aa8; word-break: break-word; }
+text-decoration:none;
 
-    .topics-wrap {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      align-items: start;
-    }
+font-weight:500;
 
-    .topics {
-      columns: 2;
-      column-gap: 28px;
-      margin: 0;
-      padding-left: 18px;
-    }
+transition:.3s;
 
-    .topics li { break-inside: avoid; margin: 0 0 10px; }
+}
 
-    .callout {
-      background: linear-gradient(180deg, #0b2447, #133c6c);
-      color: white;
-      border-radius: 26px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 18px;
-    }
+nav ul li a:hover{
 
-    .callout h3 { margin-top: 0; color: var(--gold); }
+color:#FFD54F;
 
-    .badge-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
+}
 
-    .badge {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 0.92rem;
-    }
+/************** HERO **************/
 
-    .editors-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 14px;
-    }
+.hero{
 
-    .editor {
-      background: linear-gradient(180deg, #ffffff, #f4f9ff);
-      border: 1px solid #dbeafe;
-      border-radius: 20px;
-      padding: 18px;
-      text-align: center;
-      font-weight: 800;
-      box-shadow: 0 12px 28px rgba(15,23,42,0.06);
-    }
+display:grid;
 
-    .editor span {
-      display: block;
-      margin-top: 8px;
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--muted);
-    }
+grid-template-columns:1.1fr 1fr;
 
-    .contact-banner {
-      background: linear-gradient(135deg, #0b2447, #163e72 60%, #1c5696);
-      color: white;
-      border-radius: 28px;
-      padding: 26px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: wrap;
-      box-shadow: var(--shadow);
-    }
+align-items:center;
 
-    .contact-banner h3 { margin: 0 0 6px; color: var(--gold); }
+gap:60px;
 
-    .footer {
-      margin-top: 34px;
-      background: #06152b;
-      color: rgba(255,255,255,0.9);
-      padding: 28px 0 40px;
-    }
+padding:70px 0;
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 18px;
-    }
+}
 
-    .footer a { color: var(--gold); text-decoration: none; }
+.badge{
 
-    @media (max-width: 1080px) {
-      .hero-layout, .topics-wrap, .grid-4, .editors-grid, .footer-grid { grid-template-columns: 1fr 1fr; }
-      .editors-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
+display:inline-block;
 
-    @media (max-width: 900px) {
-      .hero-layout, .grid-2, .grid-3, .topics-wrap, .footer-grid, .editors-grid { grid-template-columns: 1fr; }
-      .meta-grid { grid-template-columns: 1fr; }
-      .topics { columns: 1; }
-      .timeline-item { grid-template-columns: 1fr; }
-      .hero-card { padding: 24px; }
-    }
-  </style>
+padding:10px 20px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.15);
+
+margin-bottom:25px;
+
+font-size:14px;
+
+}
+
+.hero h1{
+
+font-size:58px;
+
+line-height:1.2;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+line-height:1.9;
+
+opacity:.95;
+
+margin-bottom:35px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:16px 36px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:600;
+
+margin-right:15px;
+
+transition:.4s;
+
+}
+
+.primary{
+
+background:white;
+
+color:#2563EB;
+
+}
+
+.primary:hover{
+
+transform:translateY(-5px);
+
+}
+
+.secondary{
+
+border:2px solid white;
+
+color:white;
+
+}
+
+.secondary:hover{
+
+background:white;
+
+color:#2563EB;
+
+}
+
+.hero img{
+
+width:100%;
+
+animation:float 5s infinite ease-in-out;
+
+}
+
+@keyframes float{
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+}
+
+/************** SECTION **************/
+
+section{
+
+padding:90px 0;
+
+}
+
+.section-title{
+
+text-align:center;
+
+font-size:42px;
+
+color:#2563EB;
+
+margin-bottom:15px;
+
+}
+
+.section-subtitle{
+
+text-align:center;
+
+color:#555;
+
+max-width:900px;
+
+margin:auto;
+
+margin-bottom:60px;
+
+}
+
+/************** RESPONSIVE **************/
+
+@media(max-width:900px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+nav{
+
+flex-direction:column;
+
+}
+
+nav ul{
+
+margin-top:20px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
-  <header class="hero">
-    <div class="container">
-      <div class="topbar">
-        <div class="brand">CRC Press <span>Book Chapter Call</span><small>Taylor & Francis</small></div>
-        <nav>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#highlights">Highlights</a>
-          <a href="#dates">Dates</a>
-          <a href="#submission">Submission</a>
-          <a href="#topics">Topics</a>
-          <a href="#editors">Editors</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
 
-      <div class="hero-card" id="home">
-        <div class="eyebrow">Call for Book Chapters • CRC Press</div>
-        <h1 class="gradient-text">High-Performance Computing and Supercomputing in the Medical Sector using AI</h1>
-        <p class="subtitle">Uses, Advances, and Future Perspectives — a forward-looking edited volume inviting strong interdisciplinary contributions from HPC, AI, healthcare, medical imaging, genomics, blockchain, IoT, digital twin, and quantum computing researchers.</p>
+<header>
 
-        <div class="hero-layout">
-          <div class="glass">
-            <h3 style="margin-top:0; color: var(--gold);">Why this volume matters</h3>
-            <p>Healthcare is entering a new era where computational power drives diagnostics, discovery, precision medicine, interoperability, and large-scale medical intelligence. This volume captures that shift through research-driven and application-oriented chapters.</p>
-            <div class="meta-grid">
-              <div class="stat">
-                <div class="label">Publisher</div>
-                <div class="value">CRC Press</div>
-              </div>
-              <div class="stat">
-                <div class="label">Deadline</div>
-                <div class="value">15 April 2026</div>
-              </div>
-              <div class="stat">
-                <div class="label">Email</div>
-                <div class="value" style="font-size:1.02rem;">bioenggiot24@gmail.com</div>
-              </div>
-              <div class="stat">
-                <div class="label">Focus</div>
-                <div class="value">HPC + AI + Healthcare</div>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank">Submit Abstract</a>
-              <a class="btn btn-secondary" href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank">View Sample Abstract</a>
-              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank">View Sample Chapter</a>
-            </div>
-          </div>
+<div class="container">
 
-          <div class="quick-box">
-            <h3>Quick Submission Panel</h3>
-            <p><strong>Proposal Submission Email</strong><br><a href="mailto:bioenggiot24@gmail.com" style="color:white;">bioenggiot24@gmail.com</a></p>
-            <p><strong>Abstract Submission Form</strong><br><a href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank" style="color:white;">Open Google Form</a></p>
-            <p><strong>Sample Abstract</strong><br><a href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank" style="color:white;">Open Document</a></p>
-            <p><strong>Sample Chapter</strong><br><a href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank" style="color:white;">Open File</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+<nav>
 
-  <main class="container">
-    <section id="about">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">About the Book</h2>
-          <p class="section-note">A multidisciplinary reference designed to bridge theoretical foundations, high-end computation, and real-world healthcare innovation.</p>
-        </div>
-      </div>
-      <div class="grid grid-2">
-        <div class="card feature-card">
-          <h3>Core Vision</h3>
-          <p class="muted">The volume explores how high-performance computing and supercomputing enable AI-driven diagnostics, medical image reconstruction, genomics, drug discovery, epidemiological simulation, healthcare interoperability, digital twin systems, and quantum-enabled medical research.</p>
-        </div>
-        <div class="card feature-card">
-          <h3>Who should contribute?</h3>
-          <p class="muted">Researchers, academicians, PhD scholars, healthcare technologists, and industry professionals working on advanced computational methods with medical relevance.</p>
-        </div>
-      </div>
-    </section>
+<div class="logo">
 
-    <section id="highlights">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Innovative Highlights</h2>
-          <p class="section-note">A more engaging website experience with fast actions, visual hierarchy, and strong topic positioning.</p>
-        </div>
-      </div>
-      <div class="grid grid-4">
-        <div class="card feature-card"><h3>Application-Oriented</h3><p class="muted">Focus on translational research and practical healthcare deployment.</p></div>
-        <div class="card feature-card"><h3>Interdisciplinary</h3><p class="muted">Combines HPC, AI, healthcare, blockchain, IoT, and quantum themes.</p></div>
-        <div class="card feature-card"><h3>Future-Focused</h3><p class="muted">Covers emerging innovations and next-generation medical computing.</p></div>
-        <div class="card feature-card"><h3>Submission-Ready</h3><p class="muted">All core links and actions are surfaced prominently for contributors.</p></div>
-      </div>
-    </section>
+Tiny<span>ML</span> Healthcare
 
-    <section id="dates">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Important Dates</h2>
-          <p class="section-note">Clear timeline for contributors and prospective authors.</p>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">Now Open</div>
-          <div><h3>Call for Chapters Active</h3><p class="muted">Authors can begin preparing abstracts and chapter proposals immediately.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">15 Apr 2026</div>
-          <div><h3>Abstract / Proposal Deadline</h3><p class="muted">Submit your proposal through the Google Form and share any supporting communication by email where needed.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">TBA</div>
-          <div><h3>Author Notification & Chapter Timeline</h3><p class="muted">Further dates for author communication and full chapter submission will be announced separately.</p></div>
-        </div>
-      </div>
-    </section>
+</div>
 
-    <section id="submission">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Submission Details</h2>
-          <p class="section-note">All essential submission resources in one place.</p>
-        </div>
-      </div>
-      <div class="grid grid-3 link-cards">
-        <div class="card">
-          <h3>Proposal Submission Email</h3>
-          <p><a href="mailto:bioenggiot24@gmail.com">bioenggiot24@gmail.com</a></p>
-          <p class="muted">Use this email for communication and submission-related queries.</p>
-        </div>
-        <div class="card">
-          <h3>Abstract Submission Form</h3>
-          <p><a href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank">https://forms.gle/qyaJUSnvJpj4MUWa8</a></p>
-          <p class="muted">Submit your abstract proposal using the official form.</p>
-        </div>
-        <div class="card">
-          <h3>Reference Documents</h3>
-          <p><a href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank">Sample Abstract</a><br><a href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank">Sample Chapter</a></p>
-          <p class="muted">Use these samples as formatting and content guidance.</p>
-        </div>
-      </div>
-    </section>
+<ul>
 
-    <section id="topics">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Suggested Topics</h2>
-          <p class="section-note">The volume welcomes proposals from a broad range of medical computing themes.</p>
-        </div>
-      </div>
-      <div class="topics-wrap">
-        <div class="card">
-          <ol class="topics">
-            <li>Introduction to HPC in Medicine</li>
-            <li>Fundamentals of Supercomputing</li>
-            <li>Cloud-HPC Integration in Healthcare</li>
-            <li>AI-Based Medical Image Diagnosis and Real-Time Reconstruction</li>
-            <li>Genomics and Precision Medicine</li>
-            <li>Drug Discovery and Molecular Dynamics</li>
-            <li>AI and Deep Learning on HPC Platforms (including NLP)</li>
-            <li>Big Data Analytics in Healthcare</li>
-            <li>Large-Scale Epidemiological and Pandemic Simulations</li>
-            <li>HPC and Blockchain for Secure Healthcare Interoperability</li>
-            <li>Edge and IoT Computing in Healthcare Networks</li>
-            <li>Energy Efficiency and Green Supercomputing</li>
-            <li>Ethical, Legal, and Social Aspects of HPC in Medicine</li>
-            <li>Digital Twin Technology in Healthcare</li>
-            <li>Quantum Computing in Medical Research</li>
-            <li>Case Studies and Real-World Applications</li>
-            <li>Future Directions and Innovations</li>
-          </ol>
-        </div>
-        <aside class="callout">
-          <h3>Ideal Contribution Areas</h3>
-          <p>Strong proposals may include novel methodologies, comparative studies, frameworks, datasets, real-world deployments, healthcare case studies, or future-oriented surveys.</p>
-          <div class="badge-list">
-            <span class="badge">HPC</span>
-            <span class="badge">AI in Healthcare</span>
-            <span class="badge">Medical Imaging</span>
-            <span class="badge">Genomics</span>
-            <span class="badge">Drug Discovery</span>
-            <span class="badge">Blockchain</span>
-            <span class="badge">IoT</span>
-            <span class="badge">Digital Twin</span>
-            <span class="badge">Quantum</span>
-          </div>
-        </aside>
-      </div>
-    </section>
+<li><a href="#about">About</a></li>
 
-    <section id="editors">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Editors</h2>
-          <p class="section-note">Editorial team for the proposed CRC Press volume.</p>
-        </div>
-      </div>
-      <div class="editors-grid">
-        <div class="editor">Dr. Atul B. Kathole<span>Editor</span></div>
-        <div class="editor">Dr. Lalit Kumar Wadhwa<span>Editor</span></div>
-        <div class="editor">Dr. Rakesh Kumar Jain<span>Editor</span></div>
-        <div class="editor">Mrs. Amita Kathole<span>Editor</span></div>
-        <div class="editor">Dr. Thangavel Murugan<span>Editor</span></div>
-      </div>
-    </section>
+<li><a href="#chapters">Chapters</a></li>
 
-    <section id="contact">
-      <div class="contact-banner">
-        <div>
-          <h3>Ready to contribute?</h3>
-          <p style="margin:0; max-width:720px;">We welcome contributions from researchers, academicians, industry professionals, and PhD scholars working in HPC, AI, healthcare, and interdisciplinary domains.</p>
-        </div>
-        <div>
-          <a class="btn btn-primary" href="mailto:bioenggiot24@gmail.com">Email Us</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<li><a href="#editors">Editors</a></li>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>CRC Press Book Chapter Call</strong>
-        <p>High-Performance Computing and Supercomputing in the Medical Sector using AI</p>
-      </div>
-      <div>
-        <strong>Quick Links</strong>
-        <p><a href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank">Abstract Form</a><br>
-        <a href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank">Sample Abstract</a><br>
-        <a href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank">Sample Chapter</a></p>
-      </div>
-      <div>
-        <strong>Contact</strong>
-        <p><a href="mailto:bioenggiot24@gmail.com">bioenggiot24@gmail.com</a><br>Submission Deadline: 15 April 2026</p>
-      </div>
-    </div>
-  </footer>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<div class="hero">
+
+<div>
+
+<div class="badge">
+
+📘 Cambridge Scholars Publishing • Scopus-Indexed • Call for Book Chapters
+
+</div>
+
+<h1>
+
+Intelligent IoT-Enabled Healthcare System Using Tiny Machine Learning for Early Diagnosis
+
+</h1>
+
+<p>
+
+A comprehensive international edited book focusing on TinyML, Healthcare IoT, Embedded AI, Wearable Health Monitoring, Biomedical Sensors, Edge Computing, Blockchain and Early Disease Diagnosis.
+
+</p>
+
+<a class="btn primary"
+href="https://forms.gle/f6ZQpr9Rp3BbJhdj8"
+target="_blank">
+
+Submit Abstract
+
+</a>
+
+<a class="btn secondary"
+href="mailto:bioenggiot24@gmail.com">
+
+Contact Editor
+
+</a>
+
+</div>
+
+<div>
+
+<img src="/tinyml-healthcare.svg" alt="TinyML Healthcare" />
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- STEP 2 START HERE -->
+<!-- ===========================================
+ABOUT BOOK
+=========================================== -->
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">
+About the Book
+</h2>
+
+<p class="section-subtitle">
+A comprehensive reference book exploring the integration of Tiny Machine Learning (TinyML), Internet of Medical Things (IoMT), Embedded Artificial Intelligence, Biomedical Sensors, and Edge Computing for next-generation intelligent healthcare systems.
+</p>
+
+<div class="about-wrapper">
+
+<div class="about-image">
+
+<img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="Healthcare AI">
+
+</div>
+
+<div class="about-content">
+
+<div class="info-box">
+
+<h3>
+<i class="fa-solid fa-book-open"></i>
+Book Overview
+</h3>
+
+<p>
+
+This edited book focuses on intelligent healthcare solutions using
+Tiny Machine Learning (TinyML), IoT, Edge AI,
+Biomedical Sensors, Wearable Devices,
+Federated Learning,
+Blockchain,
+and Embedded Systems for early disease diagnosis.
+
+It bridges academia,
+industry,
+and healthcare by presenting practical applications,
+research methodologies,
+clinical implementations,
+and future research directions.
+
+</p>
+
+</div>
+
+<div class="info-box">
+
+<h3>
+<i class="fa-solid fa-bullseye"></i>
+Objectives
+</h3>
+
+<ul>
+
+<li>Early Disease Diagnosis</li>
+
+<li>Healthcare IoT Applications</li>
+
+<li>TinyML Deployment</li>
+
+<li>Edge AI Solutions</li>
+
+<li>Smart Wearable Systems</li>
+
+<li>Secure Medical Data</li>
+
+<li>Clinical Case Studies</li>
+
+<li>Future Healthcare Technologies</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================================
+FEATURES
+=========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Key Highlights
+</h2>
+
+<p class="section-subtitle">
+Research themes covered throughout the book.
+</p>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+<h3>Healthcare IoT</h3>
+
+<p>
+Connected healthcare infrastructure and smart hospitals.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-microchip"></i>
+
+<h3>TinyML</h3>
+
+<p>
+Ultra-low-power AI running directly on embedded devices.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-brain"></i>
+
+<h3>Edge AI</h3>
+
+<p>
+Real-time diagnosis with embedded intelligence.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-stethoscope"></i>
+
+<h3>Medical AI</h3>
+
+<p>
+AI-assisted diagnosis and patient monitoring.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-network-wired"></i>
+
+<h3>IoMT</h3>
+
+<p>
+Internet of Medical Things for connected healthcare.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>Blockchain</h3>
+
+<p>
+Secure and privacy-preserving healthcare systems.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-user-doctor"></i>
+
+<h3>Clinical AI</h3>
+
+<p>
+Healthcare analytics and disease prediction.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-leaf"></i>
+
+<h3>Green AI</h3>
+
+<p>
+Energy-efficient TinyML healthcare systems.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================================
+RESEARCH AREAS
+=========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Research Areas
+</h2>
+
+<p class="section-subtitle">
+Emerging technologies covered by this book.
+</p>
+
+<div class="tag-container">
+
+<span class="tag">TinyML</span>
+
+<span class="tag">Healthcare AI</span>
+
+<span class="tag">Edge Computing</span>
+
+<span class="tag">IoMT</span>
+
+<span class="tag">Embedded Systems</span>
+
+<span class="tag">Biomedical Sensors</span>
+
+<span class="tag">Federated Learning</span>
+
+<span class="tag">Blockchain</span>
+
+<span class="tag">Smart Hospitals</span>
+
+<span class="tag">Wearable Devices</span>
+
+<span class="tag">Medical Imaging</span>
+
+<span class="tag">Deep Learning</span>
+
+<span class="tag">Cloud Computing</span>
+
+<span class="tag">Cyber Security</span>
+
+<span class="tag">Digital Healthcare</span>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.about-wrapper{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
+}
+
+.about-image img{
+
+width:100%;
+
+border-radius:25px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.info-box{
+
+background:white;
+
+padding:25px;
+
+margin-bottom:20px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.info-box h3{
+
+color:#2563EB;
+
+margin-bottom:15px;
+
+}
+
+.info-box ul{
+
+padding-left:20px;
+
+line-height:2;
+
+}
+
+.feature-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+}
+
+.feature-card{
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+transition:.4s;
+
+}
+
+.feature-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.feature-card i{
+
+font-size:45px;
+
+color:#06B6D4;
+
+margin-bottom:20px;
+
+}
+
+.tag-container{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:15px;
+
+}
+
+.tag{
+
+padding:12px 22px;
+
+background:#E0F2FE;
+
+border-radius:50px;
+
+color:#2563EB;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.tag:hover{
+
+background:#2563EB;
+
+color:white;
+
+}
+
+@media(max-width:900px){
+
+.about-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+<!-- STEP 3 START HERE -->
+<!-- ===========================================
+BOOK CHAPTERS
+=========================================== -->
+
+<section id="chapters">
+
+<div class="container">
+
+<h2 class="section-title">
+Book Chapters
+</h2>
+
+<p class="section-subtitle">
+Comprehensive coverage of TinyML, Embedded AI and Intelligent Healthcare.
+</p>
+
+<div class="chapter-grid">
+
+<div class="chapter-card">
+<span>01</span>
+<h3>Introduction to IoT in Healthcare</h3>
+<p>Healthcare IoT architecture, smart hospitals, connected medical devices and digital healthcare ecosystem.</p>
+</div>
+
+<div class="chapter-card">
+<span>02</span>
+<h3>Fundamentals of Tiny Machine Learning</h3>
+<p>TinyML architecture, TensorFlow Lite Micro, embedded inference and Edge AI fundamentals.</p>
+</div>
+
+<div class="chapter-card">
+<span>03</span>
+<h3>Embedded Systems for Medical AI</h3>
+<p>ESP32, Raspberry Pi, ARM Cortex, Arduino and embedded healthcare platforms.</p>
+</div>
+
+<div class="chapter-card">
+<span>04</span>
+<h3>Biomedical Sensors and Data Acquisition</h3>
+<p>ECG, EEG, EMG, PPG, SpO₂, Blood Pressure and Glucose Sensors.</p>
+</div>
+
+<div class="chapter-card">
+<span>05</span>
+<h3>Edge-Based Early Diagnosis Models</h3>
+<p>Real-time AI inference on embedded medical devices.</p>
+</div>
+
+<div class="chapter-card">
+<span>06</span>
+<h3>Wearable Health Monitoring Systems</h3>
+<p>Smart wearable devices for continuous health monitoring.</p>
+</div>
+
+<div class="chapter-card">
+<span>07</span>
+<h3>TinyML for Cardiac & Respiratory Disease</h3>
+<p>Embedded intelligence for heart and respiratory disease diagnosis.</p>
+</div>
+
+<div class="chapter-card">
+<span>08</span>
+<h3>AI for Neurological Signal Analysis</h3>
+<p>EEG analysis, stress detection and neurological monitoring.</p>
+</div>
+
+<div class="chapter-card">
+<span>09</span>
+<h3>TinyML for Eye and Tuberculosis Screening</h3>
+<p>Portable AI for retinal imaging and tuberculosis diagnosis.</p>
+</div>
+
+<div class="chapter-card">
+<span>10</span>
+<h3>Secure IoT and Blockchain in Healthcare</h3>
+<p>Blockchain integration, secure communication and medical data privacy.</p>
+</div>
+
+<div class="chapter-card">
+<span>11</span>
+<h3>Federated Learning for Edge Healthcare</h3>
+<p>Privacy-preserving collaborative AI for healthcare.</p>
+</div>
+
+<div class="chapter-card">
+<span>12</span>
+<h3>Energy-Efficient and Green AI Design</h3>
+<p>Ultra-low-power AI systems for sustainable healthcare.</p>
+</div>
+
+<div class="chapter-card">
+<span>13</span>
+<h3>Ethical and Regulatory Considerations</h3>
+<p>Ethics, AI governance and healthcare regulations.</p>
+</div>
+
+<div class="chapter-card">
+<span>14</span>
+<h3>Clinical Case Studies</h3>
+<p>Real-world implementations of TinyML healthcare systems.</p>
+</div>
+
+<div class="chapter-card">
+<span>15</span>
+<h3>Future Directions in TinyML Healthcare</h3>
+<p>Future research, smart hospitals and intelligent healthcare ecosystems.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================================
+STATISTICS
+=========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Book at a Glance
+</h2>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h2>15+</h2>
+
+<p>Chapters</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>4</h2>
+
+<p>Editors</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>20+</h2>
+
+<p>International Contributors</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>300+</h2>
+
+<p>Expected Pages</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================================
+EDITORIAL BOARD
+=========================================== -->
+
+<section id="editors">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Editorial Board
+
+</h2>
+
+<p class="section-subtitle">
+
+International experts leading this edited volume.
+
+</p>
+
+<div class="editor-grid">
+
+<div class="editor">
+
+<div class="avatar">AK</div>
+
+<h3>Dr. Atul B. Kathole</h3>
+
+<p>Professor & Dean (R&D)</p>
+
+<small>Ajeenkya D. Y. Patil University, Pune</small>
+
+</div>
+
+<div class="editor">
+
+<div class="avatar">LW</div>
+
+<h3>Dr. Lalit Kumar Wadhwa</h3>
+
+<p>Professor</p>
+
+<small>Dr. D. Y. Patil College of Engineering & Innovation</small>
+
+</div>
+
+<div class="editor">
+
+<div class="avatar">RJ</div>
+
+<h3>Dr. Rakesh Kumar Jain</h3>
+
+<p>Professor</p>
+
+<small>Ajeenkya D. Y. Patil University</small>
+
+</div>
+
+<div class="editor">
+
+<div class="avatar">MI</div>
+
+<h3>Dr. Mohammad Tariqul Islam</h3>
+
+<p>Professor</p>
+
+<small>Universiti Kebangsaan Malaysia (UKM)</small>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.chapter-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:25px;
+
+}
+
+.chapter-card{
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+transition:.4s;
+
+border-top:5px solid #2563EB;
+
+}
+
+.chapter-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.chapter-card span{
+
+display:inline-block;
+
+width:55px;
+
+height:55px;
+
+background:#2563EB;
+
+color:white;
+
+border-radius:50%;
+
+text-align:center;
+
+line-height:55px;
+
+font-size:22px;
+
+font-weight:bold;
+
+margin-bottom:20px;
+
+}
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+margin-top:50px;
+
+}
+
+.stat-card{
+
+background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+color:white;
+
+padding:40px;
+
+text-align:center;
+
+border-radius:20px;
+
+}
+
+.stat-card h2{
+
+font-size:50px;
+
+}
+
+.editor-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+margin-top:40px;
+
+}
+
+.editor{
+
+background:white;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:20px;
+
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+transition:.4s;
+
+}
+
+.editor:hover{
+
+transform:translateY(-8px);
+
+}
+
+.avatar{
+
+width:90px;
+
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+color:white;
+
+font-size:32px;
+
+font-weight:bold;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin-bottom:20px;
+
+}
+
+@media(max-width:900px){
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:600px){
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+<!-- STEP 4 START HERE -->
+<!-- ===========================================
+IMPORTANT DATES
+=========================================== -->
+
+<section id="dates">
+
+<div class="container">
+
+<h2 class="section-title">Important Dates</h2>
+
+<p class="section-subtitle">
+Stay updated with the book chapter submission process.
+</p>
+
+<div class="timeline">
+
+<div class="timeline-card">
+<div class="circle">1</div>
+<div>
+<h3>Call for Book Chapters</h3>
+<p>Open Now</p>
+</div>
+</div>
+
+<div class="timeline-card">
+<div class="circle">2</div>
+<div>
+<h3>Abstract Submission</h3>
+<p>Submit using Google Form</p>
+</div>
+</div>
+
+<div class="timeline-card">
+<div class="circle">3</div>
+<div>
+<h3>Acceptance Notification</h3>
+<p>Editors will communicate via email.</p>
+</div>
+</div>
+
+<div class="timeline-card">
+<div class="circle">4</div>
+<div>
+<h3>Full Chapter Submission</h3>
+<p>Final manuscript submission.</p>
+</div>
+</div>
+
+<div class="timeline-card">
+<div class="circle">5</div>
+<div>
+<h3>Publication</h3>
+<p>Cambridge Scholars Publishing • Scopus Indexed</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================================
+CALL TO ACTION
+=========================================== -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact-card">
+
+<h2>Ready to Contribute?</h2>
+
+<p>
+
+Join leading researchers and academicians in contributing to this
+international edited book on TinyML and Intelligent Healthcare.
+
+</p>
+
+<a href="https://forms.gle/f6ZQpr9Rp3BbJhdj8"
+target="_blank"
+class="btn primary">
+
+Submit Abstract
+
+</a>
+
+<a href="mailto:bioenggiot24@gmail.com"
+class="btn secondary">
+
+Email Editors
+
+</a>
+
+<br><br>
+
+<h3>
+
+📧 bioenggiot24@gmail.com
+
+</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================================
+FOOTER
+=========================================== -->
+
+<footer>
+
+<div class="container">
+
+<h2>
+
+Intelligent IoT-Enabled Healthcare System Using Tiny Machine Learning for Early Diagnosis
+
+</h2>
+
+<p style="margin-top:15px;">
+
+Cambridge Scholars Publishing | Scopus Indexed
+
+</p>
+
+<div class="footer-grid">
+
+<div>
+
+<h3>Quick Links</h3>
+
+<p><a href="#about">About</a></p>
+<p><a href="#chapters">Chapters</a></p>
+<p><a href="#editors">Editors</a></p>
+<p><a href="#dates">Important Dates</a></p>
+
+</div>
+
+<div>
+
+<h3>Research Areas</h3>
+
+<p>TinyML</p>
+<p>Healthcare IoT</p>
+<p>Edge AI</p>
+<p>Biomedical Sensors</p>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<p>bioenggiot24@gmail.com</p>
+
+<p>Pune, India</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p style="margin-top:20px;">
+
+© 2026 Intelligent IoT-Enabled Healthcare System Using Tiny Machine Learning for Early Diagnosis
+
+</p>
+
+</div>
+
+</footer>
+
+<button id="topBtn">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<style>
+
+.timeline{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+.timeline-card{
+
+display:flex;
+
+gap:20px;
+
+align-items:center;
+
+background:white;
+
+padding:25px;
+
+margin:20px 0;
+
+border-radius:18px;
+
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+}
+
+.circle{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:24px;
+
+font-weight:bold;
+
+color:white;
+
+}
+
+.contact-card{
+
+background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+padding:70px;
+
+border-radius:30px;
+
+text-align:center;
+
+color:white;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:30px;
+
+margin:40px 0;
+
+text-align:left;
+
+}
+
+footer{
+
+background:#0F172A;
+
+color:white;
+
+padding:70px 0;
+
+}
+
+footer a{
+
+color:white;
+
+text-decoration:none;
+
+}
+
+footer hr{
+
+border:.5px solid rgba(255,255,255,.15);
+
+margin-top:40px;
+
+}
+
+#topBtn{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:#2563EB;
+
+color:white;
+
+cursor:pointer;
+
+display:none;
+
+font-size:20px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+}
+
+</style>
+
+<script>
+
+const topBtn=document.getElementById("topBtn");
+
+window.onscroll=function(){
+
+if(document.documentElement.scrollTop>300){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+}
+
+topBtn.onclick=function(){
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+}
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+
+{opacity:0,transform:"translateY(40px)"},
+
+{opacity:1,transform:"translateY(0px)"}
+
+],{
+
+duration:700,
+
+fill:"forwards"
+
+});
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".feature-card,.chapter-card,.editor,.stat-card,.timeline-card,.info-box").forEach(el=>{
+
+observer.observe(el);
+
+});
+
+</script>
+
 </body>
+
 </html>

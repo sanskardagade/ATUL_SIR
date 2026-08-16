@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 
 const linkClass =
-  "text-sm font-medium text-gray-800 hover:text-[#FFBF00] transition";
+  "text-sm font-medium text-gray-800 hover:text-[#FFBF00] transition whitespace-nowrap";
 
 const activeClass =
   "text-[#FFBF00] border-b-2 border-[#FFBF00] pb-1";
@@ -17,15 +17,19 @@ const Navbar = () => {
     { label: "Experience", path: "/experience" },
     { label: "Portfolio Handled", path: "portfolio-handled" },
     { label: "Get in Touch", path: "/contact" },
+
     {
       label: "Upcoming Books",
-      path: "/books.html",
-      external: true
-    }
+      external: true,
+      dropdown: [
+        { label: "HPC", path: "/hpc.html" },
+        { label: "Tiny ML Book", path: "/books.html" },
+      ],
+    },
   ];
 
   return (
-    <header className="w-full border-b border-gray-200 bg-white">
+    <header className="relative z-50 w-full border-b border-gray-200 bg-white">
       <nav className="relative mx-auto flex max-w-7xl items-center px-4 py-4">
 
         {/* LOGO - LEFT */}
@@ -38,9 +42,51 @@ const Navbar = () => {
 
         {/* DESKTOP MENU - CENTER */}
         <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-          {navItems.map(({ label, path, external }) => (
-            <li key={path}>
-              {external ? (
+          {navItems.map(({ label, path, external, dropdown }) => (
+            <li
+              key={label}
+              className="relative group shrink-0"
+            >
+
+              {/* DROPDOWN ITEM */}
+              {dropdown ? (
+                <>
+                  <button
+                    type="button"
+                    className={`${linkClass} bg-transparent border-0 p-0`}
+                  >
+                    {label}
+                    <span className="ml-1">▾</span>
+                  </button>
+
+                  {/* DROPDOWN */}
+                  <div className="absolute left-0 top-full hidden group-hover:block z-[100]">
+                    <div className="mt-2 w-40 overflow-hidden rounded-sm border border-gray-200 bg-white shadow-lg">
+
+                      <a
+                        href="/hpc.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-50 hover:text-[#FFBF00] transition whitespace-nowrap"
+                      >
+                        HPC
+                      </a>
+
+                      <a
+                        href="/books.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-50 hover:text-[#FFBF00] transition whitespace-nowrap"
+                      >
+                        Tiny ML
+                      </a>
+
+                    </div>
+                  </div>
+                </>
+              ) : external ? (
+
+                /* EXTERNAL LINK */
                 <a
                   href={path}
                   target="_blank"
@@ -49,7 +95,10 @@ const Navbar = () => {
                 >
                   {label}
                 </a>
+
               ) : (
+
+                /* NORMAL REACT ROUTER LINK */
                 <NavLink
                   to={path}
                   className={({ isActive }) =>
@@ -58,7 +107,9 @@ const Navbar = () => {
                 >
                   {label}
                 </NavLink>
+
               )}
+
             </li>
           ))}
         </ul>
@@ -70,13 +121,53 @@ const Navbar = () => {
         >
           {menuOpen ? <HiX /> : <HiMenu />}
         </button>
+
       </nav>
 
       {/* MOBILE MENU */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t px-4 pb-4 space-y-4">
-          {navItems.map(({ label, path, external }) =>
-            external ? (
+
+          {navItems.map(({ label, path, external, dropdown }) =>
+            dropdown ? (
+
+              /* MOBILE UPCOMING BOOKS */
+              <div key={label}>
+
+                <div className={`block ${linkClass}`}>
+                  {label}
+                  <span className="ml-1">▾</span>
+                </div>
+
+                <div className="pl-4 mt-3 space-y-3">
+
+                  <a
+                    href="/hpc.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    className={`block ${linkClass}`}
+                  >
+                    HPC
+                  </a>
+
+                  <a
+                    href="/books.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    className={`block ${linkClass}`}
+                  >
+                    Tiny ML
+                  </a>
+
+                </div>
+
+              </div>
+
+            ) : external ? (
+
+              /* MOBILE EXTERNAL LINK */
               <a
                 key={path}
                 href={path}
@@ -87,19 +178,26 @@ const Navbar = () => {
               >
                 {label}
               </a>
+
             ) : (
+
+              /* MOBILE NORMAL LINK */
               <NavLink
                 key={path}
                 to={path}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `block ${linkClass} ${isActive ? "text-[#FFBF00]" : ""}`
+                  `block ${linkClass} ${
+                    isActive ? "text-[#FFBF00]" : ""
+                  }`
                 }
               >
                 {label}
               </NavLink>
+
             )
           )}
+
         </div>
       )}
     </header>
@@ -107,6 +205,290 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// import { useState } from "react";
+// import { NavLink, Link } from "react-router-dom";
+// import { HiMenu, HiX } from "react-icons/hi";
+
+// const linkClass =
+//   "text-sm font-medium text-gray-800 hover:text-[#FFBF00] transition";
+
+// const activeClass =
+//   "text-[#FFBF00] border-b-2 border-[#FFBF00] pb-1";
+
+// const Navbar = () => {
+//   const [menuOpen, setMenuOpen] = useState(false);
+
+//   const navItems = [
+//     { label: "Home", path: "/" },
+//     { label: "About Me", path: "/bio" },
+//     { label: "Experience", path: "/experience" },
+//     { label: "Portfolio Handled", path: "portfolio-handled" },
+//     { label: "Get in Touch", path: "/contact" },
+//     {
+//       label: "Upcoming Books",
+//       path: "/books.html",
+//       external: true
+//     }
+//   ];
+
+//   return (
+//     <header className="w-full border-b border-gray-200 bg-white">
+//       <nav className="relative mx-auto flex max-w-7xl items-center px-4 py-4">
+
+//         {/* LOGO - LEFT */}
+//         <Link
+//           to="/"
+//           className="text-2xl md:text-3xl font-extrabold tracking-tight text-black"
+//         >
+//           Atul Kathole
+//         </Link>
+
+//         {/* DESKTOP MENU - CENTER */}
+//         <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+//           {navItems.map(({ label, path, external }) => (
+//             <li key={path}>
+//               {external ? (
+//                 <a
+//                   href={path}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className={linkClass}
+//                 >
+//                   {label}
+//                 </a>
+//               ) : (
+//                 <NavLink
+//                   to={path}
+//                   className={({ isActive }) =>
+//                     `${linkClass} ${isActive ? activeClass : ""}`
+//                   }
+//                 >
+//                   {label}
+//                 </NavLink>
+//               )}
+//             </li>
+//           ))}
+//         </ul>
+
+//         {/* MOBILE MENU BUTTON - RIGHT */}
+//         <button
+//           className="md:hidden ml-auto text-2xl"
+//           onClick={() => setMenuOpen(!menuOpen)}
+//         >
+//           {menuOpen ? <HiX /> : <HiMenu />}
+//         </button>
+//       </nav>
+
+//       {/* MOBILE MENU */}
+//       {menuOpen && (
+//         <div className="md:hidden bg-white border-t px-4 pb-4 space-y-4">
+//           {navItems.map(({ label, path, external }) =>
+//             external ? (
+//               <a
+//                 key={path}
+//                 href={path}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 onClick={() => setMenuOpen(false)}
+//                 className={`block ${linkClass}`}
+//               >
+//                 {label}
+//               </a>
+//             ) : (
+//               <NavLink
+//                 key={path}
+//                 to={path}
+//                 onClick={() => setMenuOpen(false)}
+//                 className={({ isActive }) =>
+//                   `block ${linkClass} ${isActive ? "text-[#FFBF00]" : ""}`
+//                 }
+//               >
+//                 {label}
+//               </NavLink>
+//             )
+//           )}
+//         </div>
+//       )}
+//     </header>
+//   );
+// };
+
+// export default Navbar;
+
+// import { useState } from "react";
+// import { NavLink, Link } from "react-router-dom";
+// import { HiMenu, HiX } from "react-icons/hi";
+
+// const linkClass =
+//   "text-sm font-medium text-gray-800 hover:text-[#FFBF00] transition";
+
+// const activeClass =
+//   "text-[#FFBF00] border-b-2 border-[#FFBF00] pb-1";
+
+// const Navbar = () => {
+//   const [menuOpen, setMenuOpen] = useState(false);
+
+//   const navItems = [
+//     { label: "Home", path: "/" },
+//     { label: "About Me", path: "/bio" },
+//     { label: "Experience", path: "/experience" },
+//     { label: "Portfolio Handled", path: "portfolio-handled" },
+//     { label: "Get in Touch", path: "/contact" },
+
+//     {
+//       label: "Upcoming Books",
+//       external: true,
+//       dropdown: [
+//         { label: "HPC", path: "/hpc.html" },
+//         { label: "Tiny ML", path: "/books.html" },
+//       ],
+//     },
+//   ];
+
+//   return (
+//     <header className="w-full border-b border-gray-200 bg-white">
+//       <nav className="relative mx-auto flex max-w-7xl items-center px-4 py-4">
+
+//         {/* LOGO - LEFT */}
+//         <Link
+//           to="/"
+//           className="text-2xl md:text-3xl font-extrabold tracking-tight text-black"
+//         >
+//           Atul Kathole
+//         </Link>
+
+//         {/* DESKTOP MENU - CENTER */}
+//         <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+//           {navItems.map(({ label, path, external, dropdown }) => (
+//             <li key={label} className="relative group">
+
+//               {dropdown ? (
+//                 <>
+//                   {/* UPCOMING BOOKS */}
+//                   <button className={linkClass}>
+//                     {label} ▾
+//                   </button>
+
+//                   {/* DROPDOWN */}
+//                   <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
+//                     <div className="w-40 bg-white border border-gray-200 shadow-lg">
+
+//                       {dropdown.map(({ label, path }) => (
+//                         <a
+//                           key={path}
+//                           href={path}
+//                           target="_blank"
+//                           rel="noopener noreferrer"
+//                           className="block px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-50 hover:text-[#FFBF00] transition"
+//                         >
+//                           {label}
+//                         </a>
+//                       ))}
+
+//                     </div>
+//                   </div>
+//                 </>
+//               ) : external ? (
+//                 <a
+//                   href={path}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className={linkClass}
+//                 >
+//                   {label}
+//                 </a>
+//               ) : (
+//                 <NavLink
+//                   to={path}
+//                   className={({ isActive }) =>
+//                     `${linkClass} ${isActive ? activeClass : ""}`
+//                   }
+//                 >
+//                   {label}
+//                 </NavLink>
+//               )}
+
+//             </li>
+//           ))}
+//         </ul>
+
+//         {/* MOBILE MENU BUTTON - RIGHT */}
+//         <button
+//           className="md:hidden ml-auto text-2xl"
+//           onClick={() => setMenuOpen(!menuOpen)}
+//         >
+//           {menuOpen ? <HiX /> : <HiMenu />}
+//         </button>
+
+//       </nav>
+
+//       {/* MOBILE MENU */}
+//       {menuOpen && (
+//         <div className="md:hidden bg-white border-t px-4 pb-4 space-y-4">
+
+//           {navItems.map(({ label, path, external, dropdown }) =>
+//             dropdown ? (
+//               <div key={label}>
+
+//                 {/* UPCOMING BOOKS */}
+//                 <div className={`block ${linkClass}`}>
+//                   {label}
+//                 </div>
+
+//                 {/* DROPDOWN ITEMS */}
+//                 <div className="pl-4 mt-3 space-y-3">
+
+//                   {dropdown.map(({ label, path }) => (
+//                     <a
+//                       key={path}
+//                       href={path}
+//                       target="_blank"
+//                       rel="noopener noreferrer"
+//                       onClick={() => setMenuOpen(false)}
+//                       className={`block ${linkClass}`}
+//                     >
+//                       {label}
+//                     </a>
+//                   ))}
+
+//                 </div>
+
+//               </div>
+//             ) : external ? (
+//               <a
+//                 key={path}
+//                 href={path}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 onClick={() => setMenuOpen(false)}
+//                 className={`block ${linkClass}`}
+//               >
+//                 {label}
+//               </a>
+//             ) : (
+//               <NavLink
+//                 key={path}
+//                 to={path}
+//                 onClick={() => setMenuOpen(false)}
+//                 className={({ isActive }) =>
+//                   `block ${linkClass} ${
+//                     isActive ? "text-[#FFBF00]" : ""
+//                   }`
+//                 }
+//               >
+//                 {label}
+//               </NavLink>
+//             )
+//           )}
+
+//         </div>
+//       )}
+//     </header>
+//   );
+// };
+
+// export default Navbar;
 
 
 

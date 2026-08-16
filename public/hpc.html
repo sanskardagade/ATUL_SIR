@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRC Press Book Chapter Call</title>
+  <style>
+    :root {
+      --bg: #06152b;
+      --bg2: #0b2447;
+      --panel: rgba(255,255,255,0.1);
+      --panel-solid: #f8fbff;
+      --line: rgba(255,255,255,0.16);
+      --text: #eaf4ff;
+      --dark: #0f172a;
+      --muted: #5b6b84;
+      --gold: #ffd166;
+      --gold2: #f4b400;
+      --blue: #60a5fa;
+      --cyan: #67e8f9;
+      --red: #ef4444;
+      --shadow: 0 20px 60px rgba(0,0,0,0.28);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background:
+        radial-gradient(circle at top right, rgba(103,232,249,0.12), transparent 24%),
+        radial-gradient(circle at top left, rgba(96,165,250,0.14), transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 34%, #eef6ff 34%, #f9fbff 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .container { width: min(1180px, 92%); margin: 0 auto; position: relative; z-index: 1; }
+
+    .hero {
+      color: var(--text);
+      padding: 28px 0 36px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      right: -140px;
+      top: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,209,102,0.18), rgba(96,165,250,0.08), transparent 65%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand span { color: var(--gold); }
+    .brand small {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.78);
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 30px;
+      padding: 36px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.06));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 78% 28%, rgba(103,232,249,0.18), transparent 20%),
+                  radial-gradient(circle at 22% 82%, rgba(255,209,102,0.12), transparent 20%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(255,209,102,0.12);
+      border: 1px solid rgba(255,209,102,0.38);
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.08;
+      max-width: 920px;
+      position: relative;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #d4ecff 40%, #ffd166 95%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      font-size: 1.08rem;
+      max-width: 900px;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      margin-top: 28px;
+      align-items: stretch;
+    }
+
+    .glass, .quick-box, .mini-panel {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      padding: 20px;
+      color: white;
+      backdrop-filter: blur(12px);
+    }
+
+    .quick-box h3, .mini-panel h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font-size: 1.05rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat .label {
+      color: rgba(255,255,255,0.74);
+      font-size: 0.9rem;
+    }
+
+    .stat .value {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-top: 4px;
+      color: white;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      padding: 13px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--gold), #ffe08a);
+      color: #172033;
+      box-shadow: 0 10px 26px rgba(244,180,0,0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    section { padding: 30px 0; position: relative; z-index: 1; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 2rem;
+      color: #0b1f3a;
+    }
+
+    .section-note {
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0;
+    }
+
+    .grid { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 34px rgba(15,23,42,0.09);
+      border: 1px solid rgba(15,23,42,0.05);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #0b1f3a;
+      font-size: 1.12rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .feature-card {
+      background: linear-gradient(180deg, #ffffff, #f2f8ff);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      right: -22px;
+      top: -22px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(96,165,250,0.16), transparent 70%);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: start;
+      background: rgba(255,255,255,0.96);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+    }
+
+    .timeline-date {
+      background: linear-gradient(135deg, #0b2447, #123f74);
+      color: white;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .link-cards a, .card a { color: #0f4aa8; word-break: break-word; }
+
+    .topics-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .topics {
+      columns: 2;
+      column-gap: 28px;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .topics li { break-inside: avoid; margin: 0 0 10px; }
+
+    .callout {
+      background: linear-gradient(180deg, #0b2447, #133c6c);
+      color: white;
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 18px;
+    }
+
+    .callout h3 { margin-top: 0; color: var(--gold); }
+
+    .badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.92rem;
+    }
+
+    .editors-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .editor {
+      background: linear-gradient(180deg, #ffffff, #f4f9ff);
+      border: 1px solid #dbeafe;
+      border-radius: 20px;
+      padding: 18px;
+      text-align: center;
+      font-weight: 800;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.06);
+    }
+
+    .editor span {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .contact-banner {
+      background: linear-gradient(135deg, #0b2447, #163e72 60%, #1c5696);
+      color: white;
+      border-radius: 28px;
+      padding: 26px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-banner h3 { margin: 0 0 6px; color: var(--gold); }
+
+    .footer {
+      margin-top: 34px;
+      background: #06152b;
+      color: rgba(255,255,255,0.9);
+      padding: 28px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 1080px) {
+      .hero-layout, .topics-wrap, .grid-4, .editors-grid, .footer-grid { grid-template-columns: 1fr 1fr; }
+      .editors-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-layout, .grid-2, .grid-3, .topics-wrap, .footer-grid, .editors-grid { grid-template-columns: 1fr; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .topics { columns: 1; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .hero-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">CRC Press <span>Book Chapter Call</span><small>Taylor & Francis</small></div>
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#dates">Dates</a>
+          <a href="#submission">Submission</a>
+          <a href="#topics">Topics</a>
+          <a href="#editors">Editors</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="hero-card" id="home">
+        <div class="eyebrow">Call for Book Chapters • CRC Press</div>
+        <h1 class="gradient-text">High-Performance Computing and Supercomputing in the Medical Sector using AI</h1>
+        <p class="subtitle">Uses, Advances, and Future Perspectives — a forward-looking edited volume inviting strong interdisciplinary contributions from HPC, AI, healthcare, medical imaging, genomics, blockchain, IoT, digital twin, and quantum computing researchers.</p>
+
+        <div class="hero-layout">
+          <div class="glass">
+            <h3 style="margin-top:0; color: var(--gold);">Why this volume matters</h3>
+            <p>Healthcare is entering a new era where computational power drives diagnostics, discovery, precision medicine, interoperability, and large-scale medical intelligence. This volume captures that shift through research-driven and application-oriented chapters.</p>
+            <div class="meta-grid">
+              <div class="stat">
+                <div class="label">Publisher</div>
+                <div class="value">CRC Press</div>
+              </div>
+              <div class="stat">
+                <div class="label">Deadline</div>
+                <div class="value">15 April 2026</div>
+              </div>
+              <div class="stat">
+                <div class="label">Email</div>
+                <div class="value" style="font-size:1.02rem;">bioenggiot24@gmail.com</div>
+              </div>
+              <div class="stat">
+                <div class="label">Focus</div>
+                <div class="value">HPC + AI + Healthcare</div>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank">Submit Abstract</a>
+              <a class="btn btn-secondary" href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank">View Sample Abstract</a>
+              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank">View Sample Chapter</a>
+            </div>
+          </div>
+
+          <div class="quick-box">
+            <h3>Quick Submission Panel</h3>
+            <p><strong>Proposal Submission Email</strong><br><a href="mailto:bioenggiot24@gmail.com" style="color:white;">bioenggiot24@gmail.com</a></p>
+            <p><strong>Abstract Submission Form</strong><br><a href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank" style="color:white;">Open Google Form</a></p>
+            <p><strong>Sample Abstract</strong><br><a href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank" style="color:white;">Open Document</a></p>
+            <p><strong>Sample Chapter</strong><br><a href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank" style="color:white;">Open File</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">About the Book</h2>
+          <p class="section-note">A multidisciplinary reference designed to bridge theoretical foundations, high-end computation, and real-world healthcare innovation.</p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <div class="card feature-card">
+          <h3>Core Vision</h3>
+          <p class="muted">The volume explores how high-performance computing and supercomputing enable AI-driven diagnostics, medical image reconstruction, genomics, drug discovery, epidemiological simulation, healthcare interoperability, digital twin systems, and quantum-enabled medical research.</p>
+        </div>
+        <div class="card feature-card">
+          <h3>Who should contribute?</h3>
+          <p class="muted">Researchers, academicians, PhD scholars, healthcare technologists, and industry professionals working on advanced computational methods with medical relevance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="highlights">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Innovative Highlights</h2>
+          <p class="section-note">A more engaging website experience with fast actions, visual hierarchy, and strong topic positioning.</p>
+        </div>
+      </div>
+      <div class="grid grid-4">
+        <div class="card feature-card"><h3>Application-Oriented</h3><p class="muted">Focus on translational research and practical healthcare deployment.</p></div>
+        <div class="card feature-card"><h3>Interdisciplinary</h3><p class="muted">Combines HPC, AI, healthcare, blockchain, IoT, and quantum themes.</p></div>
+        <div class="card feature-card"><h3>Future-Focused</h3><p class="muted">Covers emerging innovations and next-generation medical computing.</p></div>
+        <div class="card feature-card"><h3>Submission-Ready</h3><p class="muted">All core links and actions are surfaced prominently for contributors.</p></div>
+      </div>
+    </section>
+
+    <section id="dates">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Important Dates</h2>
+          <p class="section-note">Clear timeline for contributors and prospective authors.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Now Open</div>
+          <div><h3>Call for Chapters Active</h3><p class="muted">Authors can begin preparing abstracts and chapter proposals immediately.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">15 Apr 2026</div>
+          <div><h3>Abstract / Proposal Deadline</h3><p class="muted">Submit your proposal through the Google Form and share any supporting communication by email where needed.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">TBA</div>
+          <div><h3>Author Notification & Chapter Timeline</h3><p class="muted">Further dates for author communication and full chapter submission will be announced separately.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="submission">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Submission Details</h2>
+          <p class="section-note">All essential submission resources in one place.</p>
+        </div>
+      </div>
+      <div class="grid grid-3 link-cards">
+        <div class="card">
+          <h3>Proposal Submission Email</h3>
+          <p><a href="mailto:bioenggiot24@gmail.com">bioenggiot24@gmail.com</a></p>
+          <p class="muted">Use this email for communication and submission-related queries.</p>
+        </div>
+        <div class="card">
+          <h3>Abstract Submission Form</h3>
+          <p><a href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank">https://forms.gle/qyaJUSnvJpj4MUWa8</a></p>
+          <p class="muted">Submit your abstract proposal using the official form.</p>
+        </div>
+        <div class="card">
+          <h3>Reference Documents</h3>
+          <p><a href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank">Sample Abstract</a><br><a href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank">Sample Chapter</a></p>
+          <p class="muted">Use these samples as formatting and content guidance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Suggested Topics</h2>
+          <p class="section-note">The volume welcomes proposals from a broad range of medical computing themes.</p>
+        </div>
+      </div>
+      <div class="topics-wrap">
+        <div class="card">
+          <ol class="topics">
+            <li>Introduction to HPC in Medicine</li>
+            <li>Fundamentals of Supercomputing</li>
+            <li>Cloud-HPC Integration in Healthcare</li>
+            <li>AI-Based Medical Image Diagnosis and Real-Time Reconstruction</li>
+            <li>Genomics and Precision Medicine</li>
+            <li>Drug Discovery and Molecular Dynamics</li>
+            <li>AI and Deep Learning on HPC Platforms (including NLP)</li>
+            <li>Big Data Analytics in Healthcare</li>
+            <li>Large-Scale Epidemiological and Pandemic Simulations</li>
+            <li>HPC and Blockchain for Secure Healthcare Interoperability</li>
+            <li>Edge and IoT Computing in Healthcare Networks</li>
+            <li>Energy Efficiency and Green Supercomputing</li>
+            <li>Ethical, Legal, and Social Aspects of HPC in Medicine</li>
+            <li>Digital Twin Technology in Healthcare</li>
+            <li>Quantum Computing in Medical Research</li>
+            <li>Case Studies and Real-World Applications</li>
+            <li>Future Directions and Innovations</li>
+          </ol>
+        </div>
+        <aside class="callout">
+          <h3>Ideal Contribution Areas</h3>
+          <p>Strong proposals may include novel methodologies, comparative studies, frameworks, datasets, real-world deployments, healthcare case studies, or future-oriented surveys.</p>
+          <div class="badge-list">
+            <span class="badge">HPC</span>
+            <span class="badge">AI in Healthcare</span>
+            <span class="badge">Medical Imaging</span>
+            <span class="badge">Genomics</span>
+            <span class="badge">Drug Discovery</span>
+            <span class="badge">Blockchain</span>
+            <span class="badge">IoT</span>
+            <span class="badge">Digital Twin</span>
+            <span class="badge">Quantum</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="editors">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Editors</h2>
+          <p class="section-note">Editorial team for the proposed CRC Press volume.</p>
+        </div>
+      </div>
+      <div class="editors-grid">
+        <div class="editor">Dr. Atul B. Kathole<span>Editor</span></div>
+        <div class="editor">Dr. Lalit Kumar Wadhwa<span>Editor</span></div>
+        <div class="editor">Dr. Rakesh Kumar Jain<span>Editor</span></div>
+        <div class="editor">Mrs. Amita Kathole<span>Editor</span></div>
+        <div class="editor">Dr. Thangavel Murugan<span>Editor</span></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-banner">
+        <div>
+          <h3>Ready to contribute?</h3>
+          <p style="margin:0; max-width:720px;">We welcome contributions from researchers, academicians, industry professionals, and PhD scholars working in HPC, AI, healthcare, and interdisciplinary domains.</p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="mailto:bioenggiot24@gmail.com">Email Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>CRC Press Book Chapter Call</strong>
+        <p>High-Performance Computing and Supercomputing in the Medical Sector using AI</p>
+      </div>
+      <div>
+        <strong>Quick Links</strong>
+        <p><a href="https://forms.gle/qyaJUSnvJpj4MUWa8" target="_blank">Abstract Form</a><br>
+        <a href="https://docs.google.com/document/d/1EkkBAiRixVWDlovSdIjhivFodcVQacaf/edit?usp=sharing&ouid=116354007652284167132&rtpof=true&sd=true" target="_blank">Sample Abstract</a><br>
+        <a href="https://drive.google.com/file/d/1Rt1gVGlCo5q6npe0Dn1X_gsUg8JZ0Lt0/view?usp=drive_link" target="_blank">Sample Chapter</a></p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:bioenggiot24@gmail.com">bioenggiot24@gmail.com</a><br>Submission Deadline: 15 April 2026</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
