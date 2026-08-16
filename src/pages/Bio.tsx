@@ -36,7 +36,7 @@ const Bio = () => {
               with over <strong className="text-white">16.6 years of teaching experience</strong>.
               I am currently working as a Professor in the
               Department of <strong className="text-white">Computer Science & Engineering</strong> at
-              <strong className="text-white"> School of Engineering, Ajeenkya D. Y. Patil University, Pune</strong>.
+              <strong className="text-white"> Associate Dean Academic, Ajeenkya D. Y. Patil University, Pune</strong>.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-4 text-sm md:text-base">

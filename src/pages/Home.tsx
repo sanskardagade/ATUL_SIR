@@ -24,7 +24,7 @@ const Home = () => {
           <p className="text-base md:text-xl max-w-3xl leading-relaxed mb-6">
             Professor · Researcher · Mentor <br />
             Department of Computer Engineering <br />
-            School of Engineering, Ajeenkya D. Y. Patil University, Pune
+            Associate Dean Academic, Ajeenkya D. Y. Patil University, Pune
           </p>
 
           {/* ================= ACADEMIC LINKS ================= */}

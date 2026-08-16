@@ -35,7 +35,7 @@ const Experience = () => {
             </p>
 
             <p className="text-gray-300 mb-4">
-              School of Engineering, Ajeenkya D. Y. Patil University, Pune
+              Associate Dean Academic, Ajeenkya D. Y. Patil University, Pune
             </p>
 
             <p className="text-gray-300 leading-relaxed text-sm md:text-base">
